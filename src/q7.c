@@ -1,2 +1,37 @@
-// Write a C program that defines a structure Employee with members: name, employee ID, and salary. 
-// Take input for 5 employees and display the details of the employee with the highest salary.
+#include <stdio.h>
+
+struct Employee
+{
+    char name[50];
+    int id;
+    float salary;
+};
+
+int main()
+{
+    struct Employee e[5];
+    int max = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Enter name: ");
+        scanf("%s", e[i].name);
+
+        printf("Enter ID: ");
+        scanf("%d", &e[i].id);
+
+        printf("Enter salary: ");
+        scanf("%f", &e[i].salary);
+    }
+
+    for (int i = 1; i < 5; i++)
+        if (e[i].salary > e[max].salary)
+            max = i;
+
+    printf("\nHighest Salary Employee\n");
+    printf("Name: %s\n", e[max].name);
+    printf("ID: %d\n", e[max].id);
+    printf("Salary: %.2f\n", e[max].salary);
+
+    return 0;
+}
